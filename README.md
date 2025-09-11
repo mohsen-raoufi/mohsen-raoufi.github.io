@@ -12,22 +12,24 @@ Hello! My name is Mohsen, I am passionate about studying systems, particularly, 
 
 ## Programming Languages
 - C++
+- Python
 - Julia
 - Matlab
-- Python
+
 
 ## Selected Projects
-
-### [Heterogeneous Collective Opinion Dynamics w. Uncertainty](https://github.com/mohsen-raoufi/Heterogeneous-Opinion-Dynamics-with-Uncertainty) 🗣️📣
-Simulation of Collective Opinion Dynamics on heterogeneous networks and opinions with uncertainty. A collaboration with Vito Mengers.
-
-`#modeling` `#collective` `#networks` `#opinion_dynamics` `#Bayesian` `#heterogeneity`
 
 
 ### [LARS: Light Augmented Reality System for Collective Robotic Systems](https://github.com/mohsen-raoufi/LARS)💡🔦🤖
 An open-source system that creates a mixed reality environment by augmenting light to the real world to enhance the (collective) robotic experiments. 
 
 `#software` `#tool` `#collective` `#robotics` `#augmented_reality` `#extended_reality` `#tracking`
+
+
+### [Heterogeneous Collective Opinion Dynamics w. Uncertainty](https://github.com/mohsen-raoufi/Heterogeneous-Opinion-Dynamics-with-Uncertainty) 🗣️📣
+Simulation of Collective Opinion Dynamics on heterogeneous networks and opinions with uncertainty. A collaboration with Vito Mengers.
+
+`#modeling` `#collective` `#networks` `#opinion_dynamics` `#Bayesian` `#heterogeneity`
 
 
 ### [Messengers: Breaking Echo Chambers in Collective Opinion Dynamics with Homophily](https://github.com/mohsen-raoufi/messengers) 💭🔴🟣🔵💭
