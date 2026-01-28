@@ -1,7 +1,12 @@
 ---
 import CardProject from "./CardProject.astro";
 import Section from "../UI/Section.astro";
-import { PROJECTS } from "../../data/projects";
+import { getCollection } from "astro:content";
+import { TAGS } from "../../data/projects";
+
+const projects = (await getCollection("projects")).sort(
+    (a, b) => a.data.order - b.data.order,
+);
 ---
 
 <Section id="projects" title="Selected Projects" titleClassName="mb-12">
@@ -27,14 +32,21 @@ import { PROJECTS } from "../../data/projects";
 
     <div class="flex flex-col gap-y-32" id="projects-container">
         {
-            PROJECTS.map((project) => (
-                <div
-                    class="project-item transition-all duration-500"
-                    data-category={project.tags.map((t) => t.name).join(",")}
-                >
-                    <CardProject {...project} />
-                </div>
-            ))
+            projects.map((project) => {
+                const richTags = project.data.tags.map((t) => TAGS[t]);
+                return (
+                    <div
+                        class="project-item transition-all duration-500"
+                        data-category={richTags.map((t) => t.name).join(",")}
+                    >
+                        <CardProject
+                            {...project.data}
+                            tags={richTags}
+                            slug={project.slug}
+                        />
+                    </div>
+                );
+            })
         }
     </div>
 </Section>

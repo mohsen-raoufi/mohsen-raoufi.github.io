@@ -1,17 +1,25 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { PROJECTS } from "../../data/projects";
+import { getCollection } from "astro:content";
+import { TAGS } from "../../data/projects";
 import Badge from "../../components/UI/Badge.astro";
 import { Icon } from "astro-icon/components";
 
 export async function getStaticPaths() {
-    return PROJECTS.map((project) => ({
+    const projects = await getCollection("projects");
+    return projects.map((project) => ({
         params: { slug: project.slug },
         props: { project },
     }));
 }
 
 const { project } = Astro.props;
+const { Content } = await project.render();
+
+// Map string tags from frontmatter back to full TAGS objects
+const richTags = project.data.tags
+    .map((tagKey) => TAGS[tagKey])
+    .filter(Boolean);
 ---
 
 <Layout>
@@ -33,13 +41,13 @@ const { project } = Astro.props;
             <!-- Project Header -->
             <div class="space-y-6 mb-12">
                 <h1 class="text-4xl md:text-5xl font-bold text-white">
-                    {project.title}
+                    {project.data.title}
                 </h1>
 
                 <!-- Tags -->
                 <div class="flex flex-wrap gap-2">
                     {
-                        project.tags.map((tag) => (
+                        richTags.map((tag) => (
                             <Badge
                                 class:list={[
                                     "flex items-center gap-x-2 text-sm py-1.5 px-3 border-white/5",
@@ -60,8 +68,8 @@ const { project } = Astro.props;
             >
                 <img
                     src={import.meta.env.BASE_URL.replace(/\/$/, "") +
-                        project.image}
-                    alt={project.title}
+                        project.data.image}
+                    alt={project.data.title}
                     class="w-full h-full object-cover"
                     transition:name={`project-image-${project.slug}`}
                 />
@@ -69,18 +77,11 @@ const { project } = Astro.props;
 
             <!-- Content -->
             <div class="grid md:grid-cols-3 gap-12">
-                <div class="md:col-span-2 space-y-6">
+                <div
+                    class="md:col-span-2 space-y-6 prose prose-invert prose-lg max-w-none"
+                >
                     <h2 class="text-2xl font-bold text-white mb-4">About</h2>
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        {project.description}
-                    </p>
-                    <p class="text-gray-400 leading-relaxed">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                    </p>
+                    <Content />
                 </div>
 
                 <!-- Sidebar / Links -->
@@ -88,9 +89,9 @@ const { project } = Astro.props;
                     <div class="glass-card p-6 rounded-2xl space-y-4">
                         <h3 class="text-xl font-bold text-white">Links</h3>
                         {
-                            project.github && (
+                            project.data.github && (
                                 <a
-                                    href={project.github}
+                                    href={project.data.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
@@ -101,9 +102,9 @@ const { project } = Astro.props;
                             )
                         }
                         {
-                            project.link && (
+                            project.data.link && (
                                 <a
-                                    href={project.link}
+                                    href={project.data.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"

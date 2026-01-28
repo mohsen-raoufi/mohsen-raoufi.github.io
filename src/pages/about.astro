@@ -11,7 +11,7 @@ import { PERSONAL_INFO } from "../data/personal";
             <!-- Back Button -->
             <div class="mb-8" data-aos="fade-right">
                 <a
-                    href={import.meta.env.BASE_URL}
+                    href={import.meta.env.BASE_URL.replace(/\/$/, "") + "/"}
                     class="inline-flex items-center gap-2 text-gray-400 hover:text-[#FFDE21] transition-colors duration-300"
                 >
                     <svg
