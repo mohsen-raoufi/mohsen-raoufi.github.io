@@ -111,7 +111,7 @@ export const PROJECTS = [
         linkText: "View Framework",
         paper: "https://www.mdpi.com/2076-3417/13/18/10492",
         github: "https://github.com/mohsen-raoufi/LARS",
-        image: "/projects/LARS.png",
+        image: "/mohsen-raoufi/projects/LARS.png",
         tags: [TAGS.ROBOTICS, TAGS.CPP, TAGS.PYTHON, TAGS.CUDA, TAGS.VISION, TAGS.End_to_end_system_design, TAGS.Qt, TAGS.OPENCV, TAGS.COLLECTIVE, TAGS.AUGMENTED_REALITY, TAGS.HUMAN_ROBOT_INTERACTION, TAGS.DATA_ANALYSIS],
     },
     {
@@ -123,7 +123,7 @@ export const PROJECTS = [
         linkText: "View Collaboration",
         github: "https://github.com/mohsen-raoufi/Heterogeneous-Opinion-Dynamics-with-Uncertainty",
         paper: "https://www.nature.com/articles/s41598-024-78856-8",
-        image: "/projects/HetOpDy.png",
+        image: "/mohsen-raoufi/projects/HetOpDy.png",
         tags: [TAGS.COLLECTIVE, TAGS.MODELLING, TAGS.PYTHON, TAGS.AI, TAGS.BAYESIAN, TAGS.PROBABILISTIC_MODELING, TAGS.NETWORK_SCIENCE, TAGS.MULTI_AGENT_SYSTEMS, TAGS.COMPLEX_SYSTEMS, TAGS.DATA_ANALYSIS],
     },
     {
@@ -134,7 +134,7 @@ export const PROJECTS = [
         // link: "https://github.com/mohsen-raoufi/messengers",
         github: "https://github.com/mohsen-raoufi/messengers",
         paper: "https://www.nature.com/articles/s41598-024-78856-8",
-        image: "/projects/MSG.png",
+        image: "/mohsen-raoufi/projects/MSG.png",
         tags: [TAGS.COLLECTIVE, TAGS.MODELLING, TAGS.PYTHON, TAGS.AI, TAGS.AGENT_BASED_MODELING, TAGS.PROBABILISTIC_MODELING, TAGS.NETWORK_SCIENCE, TAGS.MULTI_AGENT_SYSTEMS, TAGS.COMPLEX_SYSTEMS, TAGS.DATA_ANALYSIS],
     },
     // {
