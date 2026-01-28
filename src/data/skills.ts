@@ -8,59 +8,81 @@ export interface SkillCategory {
 }
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
+
     {
-        title: "AI & Machine Learning",
+        title: "Engineering & Dynamical Systems",
         skills: [
-            { name: "PyTorch", icon: "pytorch", color: "text-[#FCA47C] border-[#FCA47C]" },
-            // { name: "TensorFlow", icon: "tensorflow", color: "text-[#FCA47C] border-[#FCA47C]" }, 
-            { name: "Machine Learning on Graphs", color: "text-[#23CED9] border-[#23CED9]" },
-            { name: "Reinforcement Learning", color: "text-[#097C87] border-[#097C87]" },
-            { name: "Bayesian Methods", color: "text-[#A1CCA6] border-[#A1CCA6]" },
-        ],
-    },
-    {
-        title: "Control & Estimation",
-        skills: [
-            { name: "State Estimation (KF, EKF, PF)", color: "text-[#23CED9] border-[#23CED9]" },
-            { name: "Nonlinear Control", color: "text-[#097C87] border-[#097C87]" },
-            { name: "Optimization (GA, PSO, ACO)", color: "text-[#F9D779] border-[#F9D779]" },
             { name: "Matlab & Simulink", icon: "https://skillicons.dev/icons?i=matlab", color: "text-[#FCA47C] border-[#FCA47C]" },
-            { name: "Model-Based Design", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "State Estimation", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "Sensor Fusion", color: "text-[#097C87] border-[#097C87]" },
+            { name: "Model-Based Design", color: "text-[#FCA47C] border-[#FCA47C]" },
+            { name: "Robotic Systems Integration", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "Gazebo", icon: "/icons/Gazebo.svg", color: "text-[#FCA47C] border-[#FCA47C]" },
+            { name: "Webots", icon: "/icons/webots.png", color: "text-[#F9D779] border-[#F9D779]" },
+            { name: "Embedded Systems", icon: "arduino", color: "text-[#097C87] border-[#097C87]" },
         ],
     },
+
     {
-        title: "Languages & High-Performance",
+        title: "Systems Programming & Interactive Tools",
         skills: [
             { name: "Python", icon: "python", color: "text-[#F9D779] border-[#F9D779]" },
             { name: "C++", icon: "c++", color: "text-[#097C87] border-[#097C87]" },
-            { name: "CUDA", icon: "nvidia", color: "text-[#A1CCA6] border-[#A1CCA6]" },
             { name: "Julia", icon: "julia", color: "text-[#A1CCA6] border-[#A1CCA6]" },
-            { name: "TypeScript", icon: "typescript", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "CUDA", icon: "nvidia", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "Qt", icon: "qt", color: "text-[#097C87] border-[#097C87]" },
+            { name: "Interactive Dashboards", icon: "https://skillicons.dev/icons?i=dashboard", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "D3.js & Observable", icon: "https://skillicons.dev/icons?i=d3", color: "text-[#F9D779] border-[#F9D779]" },
+            { name: "JavaScript", icon: "javascript", color: "text-[#23CED9] border-[#23CED9]" },
         ],
     },
+
     {
-        title: "Robotics & Vision",
+        title: "Data, Modeling & Scientific Computing",
         skills: [
-            { name: "ROS/ROS2", icon: "ros", color: "text-[#097C87] border-[#097C87]" },
-            { name: "OpenCV", icon: "opencv", color: "text-[#A1CCA6] border-[#A1CCA6]" },
-            { name: "Gazebo", icon: "/icons/Gazebo.svg", color: "text-[#FCA47C] border-[#FCA47C]" },
-            { name: "Webots", icon: "/icons/webots.png", color: "text-[#F9D779] border-[#F9D779]" },
-            { name: "Embedded Systems", icon: "arduino", color: "text-[#23CED9] border-[#23CED9]" },
-            { name: "Sensor Fusion", color: "text-[#097C87] border-[#097C87]" },
+            { name: "Data Analysis & EDA", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "Statistical Modeling", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "SQL & BigQuery", icon: "https://skillicons.dev/icons?i=mysql", color: "text-[#097C87] border-[#097C87]" },
+            { name: "Agent-Based Modeling", color: "text-[#FCA47C] border-[#FCA47C]" },
         ],
     },
+
+
     {
-        title: "Full-Cycle & DevOps",
+        title: "AI, Learning & Optimization",
+        skills: [
+            { name: "Bayesian Methods & Probabilistic Models", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "Reinforcement Learning", color: "text-[#097C87] border-[#097C87]" },
+            { name: "Artificial Neural Networks (ANN)", color: "text-[#F9D779] border-[#F9D779]" },
+            { name: "Graph Neural Networks (GNN)", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "Optimization Algorithms", color: "text-[#FCA47C] border-[#FCA47C]" },
+        ],
+    },
+
+    {
+        title: "Agentic AI (Learning ...)",
+        skills: [
+            { name: "LangChain / LLM Orchestration", color: "text-[#FCA47C] border-[#FCA47C]" },
+            { name: "Retrieval-Augmented Generation (RAG)", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "Model Context Protocol (MCP)", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "n8n (Workflow & Automation)", color: "text-[#F9D779] border-[#F9D779]" },
+        ],
+    },
+
+
+
+    {
+        title: "DevOps, Infrastructure & Tooling",
         skills: [
             { name: "Docker", icon: "docker", color: "text-[#23CED9] border-[#23CED9]" },
-            { name: "Git", icon: "git", color: "text-[#FCA47C] border-[#FCA47C]" },
-            { name: "CI/CD", icon: "githubactions", color: "text-[#A1CCA6] border-[#A1CCA6]" },
-            { name: "SIL/HIL Testing", color: "text-[#F9D779] border-[#F9D779]" },
-            { name: "Linux", icon: "linux", color: "text-[#F9D779] border-[#F9D779]" },
+            { name: "CI/CD & GitHub Actions", icon: "githubactions", color: "text-[#FCA47C] border-[#FCA47C]" },
+            { name: "Git & Version Control", icon: "git", color: "text-[#F9D779] border-[#F9D779]" },
+            { name: "HIL/SIL", color: "text-[#F9D779] border-[#F9D779]" },
         ],
     },
+
     {
-        title: "Concepts",
+        title: "System-Level Perspectives & Concepts",
         skills: [
             { name: "Collective Intelligence", color: "text-[#23CED9] border-[#23CED9]" },
             { name: "Multi-Agent Systems", color: "text-[#097C87] border-[#097C87]" },
@@ -69,4 +91,5 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
             { name: "Complexity Science", color: "text-[#F9D779] border-[#F9D779]" },
         ],
     },
+
 ];
