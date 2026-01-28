@@ -30,7 +30,7 @@ const { image, title, description, tags, link, linkText, paper, github, slug } =
     <!-- Image Container (Smaller on desktop) -->
     <div class="w-full md:w-2/5">
         <a
-            href={`${import.meta.env.BASE_URL}project/${slug}`}
+            href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/project/${slug}`}
             class="block w-full"
         >
             <div
@@ -52,7 +52,9 @@ const { image, title, description, tags, link, linkText, paper, github, slug } =
         <h3
             class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300"
         >
-            <a href={`${import.meta.env.BASE_URL}project/${slug}`}>
+            <a
+                href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/project/${slug}`}
+            >
                 {title}
             </a>
         </h3>
