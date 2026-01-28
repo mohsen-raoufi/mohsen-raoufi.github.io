@@ -1,0 +1,40 @@
+---
+import Section from "../UI/Section.astro";
+import { SKILL_CATEGORIES } from "../../data/skills";
+---
+
+<Section id="skills" title="Skills">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        {
+            SKILL_CATEGORIES.map((category) => (
+                <div class="flex flex-col gap-6" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold text-gray-400 mb-2 border-l-4 border-[#FFDE21] pl-4">
+                        {category.title}
+                    </h3>
+                    <div class="flex flex-wrap gap-4">
+                        {category.skills.map((skill) => (
+                            <div
+                                class={`flex items-center gap-2 px-4 py-2 rounded-lg border bg-white/5 font-medium transition-transform hover:-translate-y-1 ${skill.color}`}
+                            >
+                                {skill.icon && (
+                                    <img
+                                        src={
+                                            skill.icon.startsWith("http") ||
+                                            skill.icon.startsWith("/")
+                                                ? skill.icon
+                                                : `https://cdn.simpleicons.org/${skill.icon}`
+                                        }
+                                        alt={skill.name}
+                                        class="w-5 h-5"
+                                        loading="lazy"
+                                    />
+                                )}
+                                {skill.name}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</Section>

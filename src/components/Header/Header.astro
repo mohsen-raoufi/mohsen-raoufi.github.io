@@ -6,33 +6,121 @@ import { PERSONAL_INFO } from "../../data/personal";
 
 <header
   id="home"
-  class="relative h-screen flex flex-col items-center justify-center text-center px-4"
+  class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-20 pb-10"
 >
-  <main class="relative z-10 flex flex-col items-center">
-    <Title level={1} animate={true}>
-      Hi, I'm <span class="text-[#FFDE21]">{PERSONAL_INFO.name}</span>
-    </Title>
+  <main
+    class="relative z-10 flex flex-col md:flex-row items-center gap-12 max-w-5xl"
+  >
+    <!-- Flip Card Profile Picture (Left Side) -->
     <div
-      class="text-lg md:text-2xl text-gray-300 mb-8 max-w-2xl font-medium h-8 flex items-center justify-center"
-      data-aos="fade-up"
-      data-aos-delay="200"
+      class="group perspective-1000 w-48 h-48 md:w-64 md:h-64 flex-shrink-0"
+      data-aos="fade-right"
     >
-      <span id="typing-text" class="typing-cursor"></span>
+      <div
+        class="relative w-full h-full transition-transform duration-1000 transform-style-3d group-hover:rotate-y-180 animate-flip-auto"
+      >
+        <!-- Front -->
+        <div
+          class="absolute inset-0 backface-hidden rounded-full border-4 border-[#FFDE21]/30 overflow-hidden shadow-[0_0_30px_rgba(255,222,33,0.2)]"
+        >
+          <img
+            src="/images/mohsen.jpg"
+            alt="Mohsen Raoufi"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <!-- Back (Flip Side) -->
+        <div
+          class="absolute inset-0 backface-hidden rotate-y-180 rounded-full border-4 border-[#FFDE21]/30 overflow-hidden shadow-[0_0_30px_rgba(255,222,33,0.2)]"
+        >
+          <!-- Using mohsen.jpg as placeholder for mohsen2.jpg until user provides it -->
+          <img
+            src="/images/mohsen_2.jpg"
+            alt="Mohsen Raoufi dotted"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
     </div>
-    <div data-aos="fade-up" data-aos-delay="400">
-      <Links />
-    </div>
-    <a
-      href={PERSONAL_INFO.resumeUrl}
-      target="_blank"
-      class="mt-8 px-8 py-3 bg-gradient-to-r from-[#FFDE21] to-[#dbab19] hover:from-[#dbab19] hover:to-[#FFDE21] text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(255,222,33,0.5)] hover:shadow-[0_0_30px_rgba(255,222,33,0.8)] border border-white/10"
-      data-aos="fade-up"
-      data-aos-delay="600"
+
+    <!-- Text Content (Right Side) -->
+    <div
+      class="flex flex-col items-center md:items-start text-center md:text-left gap-2"
+      data-aos="fade-left"
     >
-      Resume
-    </a>
+      <!-- Welcome Text -->
+      <p
+        class="font-mono text-gray-400 text-sm md:text-base tracking-widest typing-cursor-simple"
+      >
+        Welcome to my portfolio!
+      </p>
+
+      <!-- Name (Reduced Size) -->
+      <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
+        <span class="text-[#FFDE21]">{PERSONAL_INFO.name}</span>
+      </h1>
+
+      <!-- Typing Subtitle -->
+      <div
+        class="text-lg md:text-xl text-gray-300 font-medium h-8 flex items-center md:items-start justify-center md:justify-start"
+      >
+        <span id="typing-text" class="typing-cursor"></span>
+      </div>
+
+      <div class="mt-4" data-aos="fade-up" data-aos-delay="400">
+        <Links />
+      </div>
+
+      <a
+        href={PERSONAL_INFO.resumeUrl}
+        target="_blank"
+        class="mt-4 px-8 py-3 bg-gradient-to-r from-[#FFDE21] to-[#dbab19] hover:from-[#dbab19] hover:to-[#FFDE21] text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(255,222,33,0.5)] hover:shadow-[0_0_30px_rgba(255,222,33,0.8)] border border-white/10"
+        data-aos="fade-up"
+        data-aos-delay="600"
+      >
+        Resume
+      </a>
+    </div>
   </main>
 </header>
+<style>
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  /* Auto flip animation */
+  @keyframes flipAuto {
+    0%,
+    40% {
+      transform: rotateY(0);
+    }
+    50%,
+    90% {
+      transform: rotateY(180deg);
+    }
+    100% {
+      transform: rotateY(0);
+    }
+  }
+
+  .animate-flip-auto {
+    animation: flipAuto 6s infinite ease-in-out;
+  }
+
+  /* Pause hover effect if auto animation is running, or we can disable auto on hover */
+  .group:hover .animate-flip-auto {
+    animation-play-state: paused;
+  }
+</style>
 
 <script>
   const textElement = document.getElementById("typing-text");
