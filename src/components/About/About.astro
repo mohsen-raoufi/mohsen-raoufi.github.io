@@ -23,7 +23,8 @@ import Badge from "../UI/Badge.astro";
             }
             <div class="mt-4 flex justify-center md:justify-start">
                 <a
-                    href="/mohsen-raoufi/about"
+                    href={import.meta.env.BASE_URL.replace(/\/$/, "") +
+                        "/about"}
                     class="group inline-flex items-center gap-2 text-[#FFDE21] font-medium hover:text-white transition-colors duration-300"
                 >
                     Read More

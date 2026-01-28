@@ -15,7 +15,7 @@
       <ul class="hidden md:flex space-x-8">
         <li>
           <a
-            href="/mohsen-raoufi/"
+            href={import.meta.env.BASE_URL}
             class="relative group text-white font-bold transition-colors duration-300 hover:text-secondary"
             ><span
               class="absolute left-0 -bottom-2 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"
@@ -24,7 +24,7 @@
         </li>
         <li>
           <a
-            href="/mohsen-raoufi/#about"
+            href={import.meta.env.BASE_URL + "#about"}
             class="relative group text-white font-bold transition-colors duration-300 hover:text-secondary"
             ><span
               class="absolute left-0 -bottom-2 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"
@@ -33,7 +33,7 @@
         </li>
         <li>
           <a
-            href="/mohsen-raoufi/#projects"
+            href={import.meta.env.BASE_URL + "#projects"}
             class="relative group text-white font-bold transition-colors duration-300 hover:text-secondary"
             ><span
               class="absolute left-0 -bottom-2 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"
@@ -42,7 +42,7 @@
         </li>
         <li>
           <a
-            href="/mohsen-raoufi/#publications"
+            href={import.meta.env.BASE_URL + "#publications"}
             class="relative group text-white font-bold transition-colors duration-300 hover:text-secondary"
             ><span
               class="absolute left-0 -bottom-2 w-0 h-0.5 bg-secondary transition-all duration-300 group-hover:w-full"
@@ -51,7 +51,7 @@
         </li>
         <li>
           <a
-            href="/mohsen-raoufi/#contact"
+            href={import.meta.env.BASE_URL + "#contact"}
             class="px-6 py-3 bg-[#FFCE1B] hover:bg-secondary text-white font-semibold rounded-3xl transition-all duration-150 active:translate-0.5"
           >
             Contact me
@@ -104,32 +104,33 @@
   >
     <ul class="flex flex-col space-y-6 mt-10 ml-6">
       <li>
-        <a href="/" class="text-white text-lg font-bold hover:text-secondary"
-          >Home</a
+        <a
+          href={import.meta.env.BASE_URL}
+          class="text-white text-lg font-bold hover:text-secondary">Home</a
         >
       </li>
       <li>
         <a
-          href="/mohsen-raoufi/#about"
+          href={import.meta.env.BASE_URL + "#about"}
           class="text-white text-lg font-bold hover:text-secondary">About</a
         >
       </li>
       <li>
         <a
-          href="/mohsen-raoufi/#projects"
+          href={import.meta.env.BASE_URL + "#projects"}
           class="text-white text-lg font-bold hover:text-secondary">Projects</a
         >
       </li>
       <li>
         <a
-          href="/mohsen-raoufi/#publications"
+          href={import.meta.env.BASE_URL + "#publications"}
           class="text-white text-lg font-bold hover:text-secondary"
           >Publications</a
         >
       </li>
       <li>
         <a
-          href="/mohsen-raoufi/#contact"
+          href={import.meta.env.BASE_URL + "#contact"}
           class="px-6 py-3 bg-[#FFCE1B] hover:bg-secondary text-white font-semibold rounded-3xl transition-all duration-150 active:translate-0.5"
         >
           Contact me

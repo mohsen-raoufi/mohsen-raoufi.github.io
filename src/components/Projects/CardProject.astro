@@ -29,7 +29,10 @@ const { image, title, description, tags, link, linkText, paper, github, slug } =
 >
     <!-- Image Container (Smaller on desktop) -->
     <div class="w-full md:w-2/5">
-        <a href={`/project/${slug}`} class="block w-full">
+        <a
+            href={`${import.meta.env.BASE_URL}project/${slug}`}
+            class="block w-full"
+        >
             <div
                 class="glass-card relative flex flex-col items-center gap-8 transition duration-500 ease-in-out transform overflow-hidden rounded-2xl group-hover:-translate-y-2 group-hover:shadow-[0_0_30px_rgba(255,222,33,0.3)] hover:border-primary/50"
             >
@@ -37,7 +40,7 @@ const { image, title, description, tags, link, linkText, paper, github, slug } =
                     alt={title}
                     class="object-cover object-top w-full h-auto transition duration-500 md:scale-105 group-hover:scale-110"
                     loading="lazy"
-                    src={image}
+                    src={import.meta.env.BASE_URL.replace(/\/$/, "") + image}
                     transition:name={`project-image-${slug}`}
                 />
             </div>
@@ -49,7 +52,7 @@ const { image, title, description, tags, link, linkText, paper, github, slug } =
         <h3
             class="text-3xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300"
         >
-            <a href={`/project/${slug}`}>
+            <a href={`${import.meta.env.BASE_URL}project/${slug}`}>
                 {title}
             </a>
         </h3>

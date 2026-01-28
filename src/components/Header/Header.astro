@@ -24,7 +24,8 @@ import { PERSONAL_INFO } from "../../data/personal";
           class="absolute inset-0 backface-hidden rounded-full border-4 border-[#FFDE21]/30 overflow-hidden shadow-[0_0_30px_rgba(255,222,33,0.2)]"
         >
           <img
-            src="/mohsen-raoufi/images/mohsen.jpg"
+            src={import.meta.env.BASE_URL.replace(/\/$/, "") +
+              "/images/mohsen.jpg"}
             alt="Mohsen Raoufi"
             class="w-full h-full object-cover"
           />
@@ -35,7 +36,8 @@ import { PERSONAL_INFO } from "../../data/personal";
         >
           <!-- Using mohsen.jpg as placeholder for mohsen2.jpg until user provides it -->
           <img
-            src="/mohsen-raoufi/images/mohsen_2.jpg"
+            src={import.meta.env.BASE_URL.replace(/\/$/, "") +
+              "/images/mohsen_2.jpg"}
             alt="Mohsen Raoufi dotted"
             class="w-full h-full object-cover"
           />
@@ -71,18 +73,18 @@ import { PERSONAL_INFO } from "../../data/personal";
         <Links />
       </div>
 
-      <a
+      <!-- <a
         href={PERSONAL_INFO.resumeUrl}
         target="_blank"
         class="mt-4 px-8 py-3 bg-gradient-to-r from-[#FFDE21] to-[#dbab19] hover:from-[#dbab19] hover:to-[#FFDE21] text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-[0_0_20px_rgba(255,222,33,0.5)] hover:shadow-[0_0_30px_rgba(255,222,33,0.8)] border border-white/10"
         data-aos="fade-up"
         data-aos-delay="600"
       >
-        Resume
-      </a>
+        Resume -->
     </div>
   </main>
 </header>
+
 <style>
   .perspective-1000 {
     perspective: 1000px;

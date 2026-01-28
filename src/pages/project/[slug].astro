@@ -19,7 +19,7 @@ const { project } = Astro.props;
         <div class="max-w-4xl mx-auto">
             <!-- Back Button -->
             <a
-                href="/mohsen-raoufi/#projects"
+                href={import.meta.env.BASE_URL + "#projects"}
                 class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8 group"
             >
                 <Icon
@@ -58,7 +58,7 @@ const { project } = Astro.props;
                 class="rounded-3xl overflow-hidden aspect-video border border-white/10 shadow-2xl mb-12 bg-gray-900"
             >
                 <img
-                    src={project.image}
+                    src={import.meta.env.BASE_URL + project.image}
                     alt={project.title}
                     class="w-full h-full object-cover"
                     transition:name={`project-image-${project.slug}`}
