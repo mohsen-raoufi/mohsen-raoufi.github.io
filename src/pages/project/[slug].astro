@@ -113,7 +113,9 @@ const richTags = project.data.tags
                                         name="lucide:external-link"
                                         class="size-5"
                                     />
-                                    <span>Live Demo</span>
+                                    <span>
+                                        {project.data.linkText || "Live Demo"}
+                                    </span>
                                 </a>
                             )
                         }
