@@ -1,0 +1,355 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Section from "../components/UI/Section.astro";
+import Title from "../components/UI/Title.astro";
+import { PERSONAL_INFO } from "../data/personal";
+---
+
+<Layout>
+    <main class="pt-24 pb-12 px-6">
+        <div class="max-w-4xl mx-auto">
+            <!-- Back Button -->
+            <div class="mb-8" data-aos="fade-right">
+                <a
+                    href="/"
+                    class="inline-flex items-center gap-2 text-gray-400 hover:text-[#FFDE21] transition-colors duration-300"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-arrow-left"
+                    >
+                        <path d="m12 19-7-7 7-7"></path>
+                        <path d="M19 12H5"></path>
+                    </svg>
+                    Back to Home
+                </a>
+            </div>
+
+            <!-- Header -->
+            <header class="text-center mb-16" data-aos="fade-up">
+                <Title level={1}
+                    >About <span class="text-[#FFDE21]">Me</span></Title
+                >
+                <p class="text-xl text-gray-400 mt-4 max-w-2xl mx-auto">
+                    A deeper dive into my journey, research, and technical
+                    background.
+                </p>
+            </header>
+
+            <!-- Biography Section (Reused/Expanded) -->
+            <section class="mb-16" data-aos="fade-up" data-aos-delay="100">
+                <Title level={2} class="mb-6">Biography</Title>
+                <div class="flex flex-col gap-4">
+                    {
+                        PERSONAL_INFO.aboutPage?.general_about.map(
+                            (paragraph) => (
+                                <p
+                                    class="text-lg text-gray-300 leading-relaxed font-light"
+                                    set:html={paragraph}
+                                />
+                            ),
+                        )
+                    }
+                </div>
+            </section>
+
+            <!-- Academic Background -->
+            <section class="mb-16" data-aos="fade-up" data-aos-delay="200">
+                <Title level={2} class="mb-6">Academic Background</Title>
+
+                {/* Academic Intro */}
+                <div class="mb-8 text-gray-300 font-light leading-relaxed">
+                    {
+                        PERSONAL_INFO.aboutPage?.academic_about.map(
+                            (paragraph) => (
+                                <p class="text-lg mb-4" set:html={paragraph} />
+                            ),
+                        )
+                    }
+                </div>
+
+                <div class="space-y-8 border-l-2 border-white/10 pl-6 ml-3">
+                    <!-- PhD -->
+                    <div class="relative">
+                        <span
+                            class="absolute -left-[2.4rem] top-1 h-4 w-4 rounded-full bg-[#FFDE21] border-4 border-gray-950"
+                        ></span>
+                        <h3 class="text-xl font-bold text-white">Ph.D.</h3>
+                        <p class="text-[#FFDE21] mb-1">
+                            Technical University of Berlin, Germany
+                        </p>
+                        <p class="text-sm text-gray-400 mb-2">
+                            Department of Electrical Engineering and Computer
+                            Science
+                        </p>
+                        <p class="text-gray-400 italic mb-2">
+                            Aug. 2020 - Sep. 2025
+                        </p>
+                        <p class="text-gray-300 font-light mb-1">
+                            <span class="text-gray-400 font-medium"
+                                >Thesis:</span
+                            > On Differences in Collectives: Individuality, Diversity,
+                            and Heterogeneity in Robotic Collective Estimation
+                        </p>
+                        <p class="text-gray-400 text-sm">
+                            Graduated Magna Cum Laude
+                        </p>
+                    </div>
+
+                    <!-- Masters -->
+                    <div class="relative">
+                        <span
+                            class="absolute -left-[2.4rem] top-1 h-4 w-4 rounded-full bg-gray-600 border-4 border-gray-950"
+                        ></span>
+                        <h3 class="text-xl font-bold text-white">
+                            M.Sc. in Dynamics and Control Engineering
+                        </h3>
+                        <p class="text-[#FFDE21] mb-1">
+                            Sharif University of Technology, Tehran, Iran
+                        </p>
+                        <p class="text-sm text-gray-400 mb-2">
+                            Department of Engineering
+                        </p>
+                        <p class="text-gray-400 italic mb-2">
+                            Oct. 2015 - May 2018
+                        </p>
+                        <p class="text-gray-300 font-light">
+                            <span class="text-gray-400 font-medium"
+                                >Thesis:</span
+                            > Developing a Heuristic Nonlinear State-Estimator Based
+                            on Firefly Optimization Algorithm
+                        </p>
+                    </div>
+
+                    <!-- Bachelors -->
+                    <div class="relative">
+                        <span
+                            class="absolute -left-[2.4rem] top-1 h-4 w-4 rounded-full bg-gray-600 border-4 border-gray-950"
+                        ></span>
+                        <h3 class="text-xl font-bold text-white">
+                            B.Sc. in Aerospace Engineering
+                        </h3>
+                        <p class="text-[#FFDE21] mb-2">
+                            K. N. Toosi University of Technology
+                        </p>
+                        <p class="text-gray-400 italic mb-2">
+                            Oct. 2011 - Sep. 2015
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Professional Experience -->
+            <section class="mb-16" data-aos="fade-up" data-aos-delay="300">
+                <Title level={2} class="mb-6">Professional Experience</Title>
+
+                {/* Experience Intro */}
+                <div class="mb-8 text-gray-300 font-light leading-relaxed">
+                    {
+                        PERSONAL_INFO.aboutPage?.experience_about.map(
+                            (paragraph) => (
+                                <p class="text-lg mb-4" set:html={paragraph} />
+                            ),
+                        )
+                    }
+                </div>
+
+                <div class="space-y-8 border-l-2 border-white/10 pl-6 ml-3">
+                    <!-- Lecturer -->
+                    <div class="relative">
+                        <span
+                            class="absolute -left-[2.4rem] top-1 h-4 w-4 rounded-full bg-[#FFDE21] border-4 border-gray-950"
+                        ></span>
+                        <h3 class="text-xl font-bold text-white">Lecturer</h3>
+                        <p class="text-[#FFDE21] mb-1">
+                            Technical University of Berlin
+                        </p>
+                        <p class="text-gray-400 italic mb-2">
+                            Oct. 2024 - Feb. 2025
+                        </p>
+                        <ul
+                            class="list-disc list-outside ml-4 text-gray-300 font-light space-y-1"
+                        >
+                            <li>
+                                Curated and taught a graduate-level seminar,
+                                "Introduction to Collective Robotics"
+                            </li>
+                            <li>
+                                Supervised student projects on collective
+                                behavior
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Doctoral Researcher -->
+                    <div class="relative">
+                        <span
+                            class="absolute -left-[2.4rem] top-1 h-4 w-4 rounded-full bg-gray-600 border-4 border-gray-950"
+                        ></span>
+                        <h3 class="text-xl font-bold text-white">
+                            Doctoral Researcher
+                        </h3>
+                        <p class="text-[#FFDE21] mb-1">
+                            Research Cluster of Excellence, Science of
+                            Intelligence
+                        </p>
+                        <p class="text-gray-400 italic mb-2">
+                            Aug. 2020 - Sep. 2025
+                        </p>
+                        <ul
+                            class="list-disc list-outside ml-4 text-gray-300 font-light space-y-1"
+                        >
+                            <li>
+                                Modeled decentralized decision-making and
+                                distributed learning using Python (e.g.,
+                                PyTorch, Jax)
+                            </li>
+                            <li>
+                                Performed large-scale simulations on HPCs with
+                                data analysis of emergent dynamics
+                            </li>
+                            <li>
+                                Implemented collective estimation on networked
+                                sensors and robotic collectives
+                            </li>
+                            <li>
+                                Published and presented in Scientific Reports,
+                                NPJ Complexity, IEEE ICRA, and Sensors
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Research Assistant -->
+                    <div class="relative">
+                        <span
+                            class="absolute -left-[2.4rem] top-1 h-4 w-4 rounded-full bg-gray-600 border-4 border-gray-950"
+                        ></span>
+                        <h3 class="text-xl font-bold text-white">
+                            Research Assistant
+                        </h3>
+                        <p class="text-[#FFDE21] mb-1">
+                            Middle-East Technical University, Ankara, Turkiye
+                        </p>
+                        <p class="text-gray-400 italic mb-2">
+                            Feb. 2020 - Aug. 2020
+                        </p>
+                        <ul
+                            class="list-disc list-outside ml-4 text-gray-300 font-light space-y-1"
+                        >
+                            <li>
+                                Conducted research on adaptive collective
+                                aggregation in multi-agent systems using
+                                agent-based models and physics-based simulation
+                                in Python, and Webots
+                            </li>
+                            <li>
+                                Supervised a master's student whose work led to
+                                a publication in Adaptive Behavior journal
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Research Collaborator -->
+                    <div class="relative">
+                        <span
+                            class="absolute -left-[2.4rem] top-1 h-4 w-4 rounded-full bg-gray-600 border-4 border-gray-950"
+                        ></span>
+                        <h3 class="text-xl font-bold text-white">
+                            Research Collaborator
+                        </h3>
+                        <p class="text-[#FFDE21] mb-1">
+                            University of Manchester, UK (Remote)
+                        </p>
+                        <p class="text-sm text-gray-400 mb-2">
+                            Control Systems Group
+                        </p>
+                        <p class="text-gray-400 italic mb-2">
+                            Sep. 2018 - Dec. 2019
+                        </p>
+                        <ul
+                            class="list-disc list-outside ml-4 text-gray-300 font-light space-y-1"
+                        >
+                            <li>
+                                Studied adaptive collective behavior and
+                                self-organization in multi-robot systems
+                            </li>
+                            <li>
+                                Applied optimization algorithms to fine-tune
+                                behavioral parameters for improved performance
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Software Developer -->
+                    <div class="relative">
+                        <span
+                            class="absolute -left-[2.4rem] top-1 h-4 w-4 rounded-full bg-gray-600 border-4 border-gray-950"
+                        ></span>
+                        <h3 class="text-xl font-bold text-white">
+                            Software Developer
+                        </h3>
+                        <p class="text-[#FFDE21] mb-1">
+                            Sharif University of Technology, Tehran, Iran
+                        </p>
+                        <p class="text-gray-400 italic mb-2">
+                            May 2017 - May 2018
+                        </p>
+                        <ul
+                            class="list-disc list-outside ml-4 text-gray-300 font-light space-y-1"
+                        >
+                            <li>
+                                Developed GUI and real-time object tracking
+                                system for controlling a pan-tilt-zoom camera,
+                                in C++/QT/OpenCV/CUDA on TI board
+                            </li>
+                            <li>
+                                Achieved a certificate for Model-Based Design
+                                using Matlab and Simulink
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Robotics Engineer -->
+                    <div class="relative">
+                        <span
+                            class="absolute -left-[2.4rem] top-1 h-4 w-4 rounded-full bg-gray-600 border-4 border-gray-950"
+                        ></span>
+                        <h3 class="text-xl font-bold text-white">
+                            Robotics Engineer
+                        </h3>
+                        <p class="text-[#FFDE21] mb-1">
+                            KN2C Robotics Team, Tehran, Iran
+                        </p>
+                        <p class="text-gray-400 italic mb-2">
+                            Sep. 2011 - Sep. 2015
+                        </p>
+                        <ul
+                            class="list-disc list-outside ml-4 text-gray-300 font-light space-y-1"
+                        >
+                            <li>
+                                Designed and built a quadrotor UAV, which won
+                                1st place at the IMAV 2016 competition
+                            </li>
+                            <li>
+                                Designed, and prototyped small-size soccer
+                                robots from the ground up
+                            </li>
+                            <li>
+                                Led the mobile robot team, winning 1st and 2nd
+                                place in the machine vision challenge
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</Layout>

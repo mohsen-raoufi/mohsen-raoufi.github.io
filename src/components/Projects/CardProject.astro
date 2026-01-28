@@ -13,11 +13,14 @@ interface Props {
         icon: string;
     }>;
     link?: string;
+    linkText?: string;
+    paper?: string;
     github?: string;
     slug: string;
 }
 
-const { image, title, description, tags, link, github, slug } = Astro.props;
+const { image, title, description, tags, link, linkText, paper, github, slug } =
+    Astro.props;
 ---
 
 <article
@@ -32,7 +35,7 @@ const { image, title, description, tags, link, github, slug } = Astro.props;
             >
                 <img
                     alt={title}
-                    class="object-cover object-top w-full aspect-video transition duration-500 md:scale-105 group-hover:scale-110"
+                    class="object-cover object-top w-full h-auto transition duration-500 md:scale-105 group-hover:scale-110"
                     loading="lazy"
                     src={image}
                     transition:name={`project-image-${slug}`}
@@ -70,9 +73,10 @@ const { image, title, description, tags, link, github, slug } = Astro.props;
             }
         </ul>
 
-        <p class="text-lg text-gray-300 mb-8 leading-relaxed font-light">
-            {description}
-        </p>
+        <p
+            class="text-lg text-gray-300 mb-8 leading-relaxed font-light"
+            set:html={description}
+        />
 
         <footer class="flex items-center justify-start gap-x-4">
             {
@@ -87,7 +91,15 @@ const { image, title, description, tags, link, github, slug } = Astro.props;
                 link && (
                     <LinkButton href={link}>
                         <Icon name="lucide:external-link" class="size-4" />
-                        Live Demo
+                        {linkText || "Live Demo"}
+                    </LinkButton>
+                )
+            }
+            {
+                paper && (
+                    <LinkButton href={paper}>
+                        <Icon name="lucide:file-text" class="size-4" />
+                        Paper
                     </LinkButton>
                 )
             }

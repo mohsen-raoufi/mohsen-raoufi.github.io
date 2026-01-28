@@ -2,49 +2,71 @@ export interface SkillCategory {
     title: string;
     skills: {
         name: string;
-        icon?: string; // Optional icon class or path
-        color: string; // Tailwind class or hex for border/text
+        icon?: string;
+        color: string;
     }[];
 }
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
     {
-        title: "Languages & Backend",
+        title: "AI & Machine Learning",
         skills: [
-            { name: "C++", icon: "cplusplus", color: "text-blue-500 border-blue-500" },
-            { name: "Python", icon: "python", color: "text-yellow-500 border-yellow-500" },
-            { name: "Julia", icon: "julia", color: "text-purple-500 border-purple-500" },
-            { name: "Matlab", icon: "https://skillicons.dev/icons?i=matlab", color: "text-orange-500 border-orange-500" },
-            { name: "Go", icon: "go", color: "text-cyan-500 border-cyan-500" },
+            { name: "PyTorch", icon: "pytorch", color: "text-[#FCA47C] border-[#FCA47C]" },
+            // { name: "TensorFlow", icon: "tensorflow", color: "text-[#FCA47C] border-[#FCA47C]" }, 
+            { name: "Machine Learning on Graphs", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "Reinforcement Learning", color: "text-[#097C87] border-[#097C87]" },
+            { name: "Bayesian Methods", color: "text-[#A1CCA6] border-[#A1CCA6]" },
         ],
     },
     {
-        title: "Robotics & AI",
+        title: "Control & Estimation",
         skills: [
-            { name: "ROS/ROS2", icon: "ros", color: "text-indigo-400 border-indigo-400" },
-            { name: "Gazebo", icon: "/icons/gazebo.svg", color: "text-orange-400 border-orange-400" },
-            { name: "OpenCV", icon: "opencv", color: "text-green-500 border-green-500" },
-            { name: "TensorFlow", icon: "tensorflow", color: "text-orange-500 border-orange-500" },
-            { name: "PyTorch", icon: "pytorch", color: "text-red-500 border-red-500" },
+            { name: "State Estimation (KF, EKF, PF)", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "Nonlinear Control", color: "text-[#097C87] border-[#097C87]" },
+            { name: "Optimization (GA, PSO, ACO)", color: "text-[#F9D779] border-[#F9D779]" },
+            { name: "Matlab & Simulink", icon: "https://skillicons.dev/icons?i=matlab", color: "text-[#FCA47C] border-[#FCA47C]" },
+            { name: "Model-Based Design", color: "text-[#A1CCA6] border-[#A1CCA6]" },
         ],
     },
     {
-        title: "Tools & DevOps",
+        title: "Languages & High-Performance",
         skills: [
-            { name: "Docker", icon: "docker", color: "text-blue-400 border-blue-400" },
-            { name: "Git", icon: "git", color: "text-red-400 border-red-400" },
-            { name: "Linux", icon: "linux", color: "text-yellow-400 border-yellow-400" },
-            { name: "CI/CD", icon: "githubactions", color: "text-gray-400 border-gray-400" },
+            { name: "Python", icon: "python", color: "text-[#F9D779] border-[#F9D779]" },
+            { name: "C++", icon: "c++", color: "text-[#097C87] border-[#097C87]" },
+            { name: "CUDA", icon: "nvidia", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "Julia", icon: "julia", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "TypeScript", icon: "typescript", color: "text-[#23CED9] border-[#23CED9]" },
+        ],
+    },
+    {
+        title: "Robotics & Vision",
+        skills: [
+            { name: "ROS/ROS2", icon: "ros", color: "text-[#097C87] border-[#097C87]" },
+            { name: "OpenCV", icon: "opencv", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "Gazebo", icon: "/icons/Gazebo.svg", color: "text-[#FCA47C] border-[#FCA47C]" },
+            { name: "Webots", icon: "/icons/webots.png", color: "text-[#F9D779] border-[#F9D779]" },
+            { name: "Embedded Systems", icon: "arduino", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "Sensor Fusion", color: "text-[#097C87] border-[#097C87]" },
+        ],
+    },
+    {
+        title: "Full-Cycle & DevOps",
+        skills: [
+            { name: "Docker", icon: "docker", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "Git", icon: "git", color: "text-[#FCA47C] border-[#FCA47C]" },
+            { name: "CI/CD", icon: "githubactions", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "SIL/HIL Testing", color: "text-[#F9D779] border-[#F9D779]" },
+            { name: "Linux", icon: "linux", color: "text-[#F9D779] border-[#F9D779]" },
         ],
     },
     {
         title: "Concepts",
         skills: [
-            // These are abstract concepts, so no direct icons. We can keep them text-only or find generic icons.
-            { name: "Collective Intelligence", color: "text-teal-400 border-teal-400" },
-            { name: "Multi-Agent Systems", color: "text-pink-400 border-pink-400" },
-            { name: "Control Theory", color: "text-blue-300 border-blue-300" },
-            { name: "Network Science", color: "text-green-300 border-green-300" },
+            { name: "Collective Intelligence", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "Multi-Agent Systems", color: "text-[#097C87] border-[#097C87]" },
+            { name: "Control Theory", color: "text-[#FCA47C] border-[#FCA47C]" },
+            { name: "Network Science", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "Complexity Science", color: "text-[#F9D779] border-[#F9D779]" },
         ],
     },
 ];

@@ -6,10 +6,6 @@ import { Icon } from "astro-icon/components";
     <div
         class="max-w-7xl mx-auto px-6 flex flex-row items-center justify-center gap-4 text-center"
     >
-        <p class="text-gray-400 text-sm md:text-base">
-            by <span class="text-white font">Mohsen Raoufi</span>, with passion
-        </p>
-
         <a
             href="https://github.com/mohsen-raoufi"
             target="_blank"
@@ -19,5 +15,18 @@ import { Icon } from "astro-icon/components";
         >
             <Icon name="lucide:github" class="size-6" />
         </a>
+
+        <p class="text-gray-400 text-sm md:text-base">
+            by <span class="text-white font">Mohsen Raoufi</span>, with passion,
+            powered by
+            <a
+                href="https://astro.build"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white font-medium hover:text-primary transition-colors"
+            >
+                Astro
+            </a>
+        </p>
     </div>
 </footer>
