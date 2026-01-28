@@ -1,0 +1,167 @@
+<canvas
+    id="star-canvas"
+    class="fixed inset-0 pointer-events-none -z-10 bg-gray-950"></canvas>
+
+<script>
+    const canvas = document.getElementById("star-canvas") as HTMLCanvasElement;
+    const ctx = canvas.getContext("2d");
+
+    let width = 0;
+    let height = 0;
+    let mouseX = -1000;
+    let mouseY = -1000;
+
+    // Configuration
+    const STAR_COUNT = 300;
+    const YELLOW_RATIO = 0.1; // 10% yellow stars
+    const COLOR_YELLOW = "#FFDE21";
+    const COLOR_WHITE = "#FFFFFF";
+
+    // Flocking/Circulation parameters
+    const MOUSE_RADIUS = 150; // Reduced from 300
+    const REPULSION_STRENGTH = 0.02; // Reduced from 0.05
+    const CIRCULATION_STRENGTH = 0.01; // Gentle swirl
+    const FRICTION = 0.96; // Damping
+    const MAX_SPEED = 1.5; // Reduced from 2.0
+
+    class Star {
+        x: number;
+        y: number;
+        size: number;
+        color: string;
+        vx: number; // Velocity X
+        vy: number; // Velocity Y
+        baseVx: number; // Natural drift X
+        baseVy: number; // Natural drift Y
+
+        constructor() {
+            this.init(true);
+        }
+
+        init(randomY = false) {
+            this.x = Math.random() * width;
+            this.y = randomY ? Math.random() * height : height + 10;
+
+            // 3 sizes like the original CSS: 1px, 2px, 3px roughly
+            // We use radius, so 0.5, 1, 1.5
+            const r = Math.random();
+            if (r < 0.6)
+                this.size = 0.8; // Small (most common)
+            else if (r < 0.9)
+                this.size = 1.5; // Medium
+            else this.size = 2.2; // Large
+
+            this.color =
+                Math.random() < YELLOW_RATIO ? COLOR_YELLOW : COLOR_WHITE;
+
+            // Base drift (slowly upward and slightly sideways like heat/smoke)
+            this.baseVx = (Math.random() - 0.5) * 0.2;
+            this.baseVy = -Math.random() * 0.5 - 0.2; // Upward
+
+            this.vx = this.baseVx;
+            this.vy = this.baseVy;
+        }
+
+        update() {
+            // 1. Calculate vector to mouse
+            const dx = mouseX - this.x;
+            const dy = mouseY - this.y;
+            const distSq = dx * dx + dy * dy;
+            const dist = Math.sqrt(distSq);
+
+            // 2. Mouse Interaction
+            if (dist < MOUSE_RADIUS) {
+                // Repulsion force (push away from mouse)
+                // Invert dx/dy logic: we want to move AWAY from mouse
+                const repulsionX = -dx * REPULSION_STRENGTH;
+                const repulsionY = -dy * REPULSION_STRENGTH;
+
+                // Circulation force (perpendicular to radial vector)
+                const circulationX = -dy * CIRCULATION_STRENGTH;
+                const circulationY = dx * CIRCULATION_STRENGTH;
+
+                // Smoothly blend forces based on distance (closer = stronger)
+                const t = 1 - dist / MOUSE_RADIUS;
+
+                this.vx += (repulsionX + circulationX) * t * 0.05;
+                this.vy += (repulsionY + circulationY) * t * 0.05;
+            }
+
+            // 3. Apply natural drift tendency (boids trying to conform to flow)
+            // Gradually move back towards base velocity if not influenced strongly
+            this.vx += (this.baseVx - this.vx) * 0.02;
+            this.vy += (this.baseVy - this.vy) * 0.02;
+
+            // 4. Limit Speed
+            const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+            if (speed > MAX_SPEED) {
+                this.vx = (this.vx / speed) * MAX_SPEED;
+                this.vy = (this.vy / speed) * MAX_SPEED;
+            }
+
+            // 5. Apply Velocity
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // 6. Wrap around screen
+            if (this.y < -10) this.y = height + 10;
+            if (this.x < -10) this.x = width + 10;
+            if (this.x > width + 10) this.x = -10;
+        }
+
+        draw() {
+            if (!ctx) return;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+        }
+    }
+
+    const stars: Star[] = [];
+
+    function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+
+        // Re-initialize stars if count changes significantly or just clear
+        stars.length = 0;
+        for (let i = 0; i < STAR_COUNT; i++) {
+            stars.push(new Star());
+        }
+    }
+
+    function animate() {
+        if (!ctx) return;
+        ctx.clearRect(0, 0, width, height);
+
+        for (const star of stars) {
+            star.update();
+            star.draw();
+        }
+
+        requestAnimationFrame(animate);
+    }
+
+    // Mouse tracking
+    window.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    // Handle window touch for mobile "mouse"
+    window.addEventListener("touchmove", (e) => {
+        if (e.touches.length > 0) {
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        }
+    });
+
+    window.addEventListener("resize", resize);
+
+    // Initialize
+    resize();
+    animate();
+</script>

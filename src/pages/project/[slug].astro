@@ -1,0 +1,122 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { PROJECTS } from "../../data/projects";
+import Badge from "../../components/UI/Badge.astro";
+import { Icon } from "astro-icon/components";
+
+export async function getStaticPaths() {
+    return PROJECTS.map((project) => ({
+        params: { slug: project.slug },
+        props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout>
+    <main class="pt-24 pb-20 px-4 min-h-screen">
+        <div class="max-w-4xl mx-auto">
+            <!-- Back Button -->
+            <a
+                href="/#projects"
+                class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8 group"
+            >
+                <Icon
+                    name="lucide:arrow-left"
+                    class="size-5 transition-transform group-hover:-translate-x-1"
+                />
+                Back to Projects
+            </a>
+
+            <!-- Project Header -->
+            <div class="space-y-6 mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-white">
+                    {project.title}
+                </h1>
+
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-2">
+                    {
+                        project.tags.map((tag) => (
+                            <Badge
+                                class:list={[
+                                    "flex items-center gap-x-2 text-sm py-1.5 px-3 border-white/5",
+                                    tag.class,
+                                ]}
+                            >
+                                <Icon name={tag.icon} class="size-4" />
+                                {tag.name}
+                            </Badge>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <!-- Project Image -->
+            <div
+                class="rounded-3xl overflow-hidden aspect-video border border-white/10 shadow-2xl mb-12 bg-gray-900"
+            >
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    class="w-full h-full object-cover"
+                    transition:name={`project-image-${project.slug}`}
+                />
+            </div>
+
+            <!-- Content -->
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="md:col-span-2 space-y-6">
+                    <h2 class="text-2xl font-bold text-white mb-4">About</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        {project.description}
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua. Ut enim ad minim veniam, quis nostrud
+                        exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.
+                    </p>
+                </div>
+
+                <!-- Sidebar / Links -->
+                <div class="space-y-6">
+                    <div class="glass-card p-6 rounded-2xl space-y-4">
+                        <h3 class="text-xl font-bold text-white">Links</h3>
+                        {
+                            project.github && (
+                                <a
+                                    href={project.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
+                                >
+                                    <Icon name="lucide:github" class="size-5" />
+                                    <span>Source Code</span>
+                                </a>
+                            )
+                        }
+                        {
+                            project.link && (
+                                <a
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
+                                >
+                                    <Icon
+                                        name="lucide:external-link"
+                                        class="size-5"
+                                    />
+                                    <span>Live Demo</span>
+                                </a>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>

@@ -1,0 +1,64 @@
+---
+import "../styles/global.css";
+import Navbar from "../components/Navbar/NavBar.astro";
+import Footer from "../components/Footer/Footer.astro";
+import InteractiveBackground from "../components/UI/InteractiveBackground.astro";
+import "aos/dist/aos.css";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/jpg" href="/favicon_3.jpg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Mohsen Raoufi | Portfolio</title>
+
+		<!-- Google Fonts: Outfit -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class="text-white bg-gray-950 transition-colors duration-300">
+		<InteractiveBackground />
+		<Navbar />
+		<slot />
+		<Footer />
+
+		<style is:global>
+			html,
+			body {
+				overflow-x: hidden;
+			}
+			html {
+				font-family: "Outfit", system-ui, sans-serif;
+				scroll-behavior: smooth;
+			}
+
+			body {
+				margin: 0;
+				padding: 0;
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				html {
+					scroll-behavior: auto;
+				}
+			}
+		</style>
+
+		<script>
+			import AOS from "aos";
+			AOS.init({
+				duration: 2000,
+				easing: "ease-out-cubic",
+				once: true,
+				offset: 100,
+			});
+		</script>
+	</body>
+</html>

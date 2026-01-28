@@ -1,56 +1,44 @@
-# Welcome to My Profile! 👋
+# Portfolio Developers Astro
 
-## About Me
+This is a modern, responsive developer portfolio built with Astro and Tailwind CSS. It features a sleek glassmorphism design and smooth scroll animations.
 
-Hi, I’m Mohsen. I work on complex systems and spend a lot of time thinking about how collectives behave and how their dynamics emerge.
+## 🚀 Purpose
+This project is my contribution to the developer community. Whether you are looking for a template to jumpstart your own portfolio or just need some inspiration for your next project, feel free to explore, fork, and adapt it to your needs!
 
-Most of what I do is somehow between AI, systems engineering, and hands-on research. I enjoy building end-to-end prototypes, connecting models, data, and real systems, and turning ideas into things that actually run. Lately, I’ve been especially interested in AI automation, learning-based methods, and how data-driven approaches play with more structured, model-based systems.
+## ✨ Key Features
+- **Modern UI**: Clean design with glassmorphism effects.
+- **Scroll Animations**: Smooth entry animations powered by AOS (Animate On Scroll).
+- **Responsive Design**: Optimized for all screen sizes, from mobile to desktop.
+- **Fast Performance**: Built with Astro for near-instant load times.
+- **Dynamic Content**: Modular components for easy customization.
 
-This GitHub profile is a home for experiments, tools, and side projects across collective intelligence, AI, robotics, networks, and distributed systems. In one way or another, most of the repositories here are about understanding systems by building them..
+## 🛠️ Technologies
+- **[Astro](https://astro.build/)**: The web framework for content-driven websites.
+- **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework.
+- **[AOS](https://michalsnik.github.io/aos/)**: Animate on scroll library.
+- **[Lucide Icons](https://lucide.dev/)**: Beautiful & consistent icons.
 
-[![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/mohsen-raoufi/) [![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/:mohsen_raoufi)](https://twitter.com/mohsen_raoufi) [![Google Scholar](https://img.shields.io/badge/Google_Scholar-4285F4?style=flat&logo=google-scholar&logoColor=white)](https://scholar.google.com/citations?user=P9A5OrEAAAAJ&hl=en)
+## 📁 Project Structure
+```text
+/
+├── public/             # Static assets (images, favicon)
+├── src/
+│   ├── components/      # Reusable UI components (NavBar, About, Projects, etc.)
+│   ├── layouts/         # Page templates
+│   ├── pages/           # Project routes (index.astro)
+│   └── styles/          # Global and animation CSS files
+├── astro.config.mjs    # Astro configuration
+├── package.json        # Dependencies and scripts
+└── tsconfig.json       # TypeScript configuration
+```
 
-- 📧 **Email**: mohsenraoufi@icloud.com
-- 🌐 **Website**: [https://sites.google.com/view/mohsen-raoufi](https://sites.google.com/view/mohsen-raoufi)
-
-
-## Programming Languages
-- C++
-- Python
-- Julia
-- Matlab
-
-
-## Selected Projects
-
-
-### [LARS: Light Augmented Reality System for Collective Robotic Systems](https://github.com/mohsen-raoufi/LARS)💡🔦🤖
-An open-source system that creates a mixed reality environment by augmenting light to the real world to enhance the (collective) robotic experiments. 
-
-`#software` `#tool` `#collective` `#robotics` `#augmented_reality` `#extended_reality` `#tracking`
-
-
-### [Heterogeneous Collective Opinion Dynamics w. Uncertainty](https://github.com/mohsen-raoufi/Heterogeneous-Opinion-Dynamics-with-Uncertainty) 🗣️📣
-Simulation of Collective Opinion Dynamics on heterogeneous networks and opinions with uncertainty. A collaboration with Vito Mengers.
-
-`#modeling` `#collective` `#networks` `#opinion_dynamics` `#Bayesian` `#heterogeneity`
-
-
-### [Messengers: Breaking Echo Chambers in Collective Opinion Dynamics with Homophily](https://github.com/mohsen-raoufi/messengers) 💭🔴🟣🔵💭
-Simulation of conformity in opinion dynamics with homophily in spatial collective system.
-
-`#collective` `#agent-based modeling` `#ABM` `#opinion_dynamics` `#echo_chamber`
-
-
-### [Individuality in Kilobots](https://github.com/mohsen-raoufi/Kilobots-Individuality-ALife-23) 🔵🟢🟡🟠🤖
-An updated simulator of Kilobots with heterogeneous heading biases in ARGoS simulator. 
-
-`#experiment` `#robotics` `#collective` `#individuality` `#simulation` `#Kilobot`
-
-
-### [KN2C Small-Size Soccer Robot Team Repo](https://github.com/mohsen-raoufi/KN2C-SSL) ⚽️🤖
-Our old Small-Size Soccer (SSL) robotic team for Robocup completitions. 
-
-`#robotics` `#robocup` `#soccer`
+## 🛠️ Getting Started
+1. **Clone the repository**
+2. **Install dependencies**: `npm install`
+3. **Start the development server**: `npm run dev`
+4. **Build for production**: `npm run build`
 
 ---
+<img width="1366" height="3312" alt="Screenshot 2025-12-25 at 01-24-30 Portfolio Developers" src="https://github.com/user-attachments/assets/4016ca5c-fdca-4b00-a01f-02ef74daab63" />
+
+*Happy coding!* 🚀
