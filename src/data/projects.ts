@@ -99,6 +99,11 @@ export const TAGS = {
         class: "bg-[#2ea68d]/20 text-[#2ea68d]",
         icon: "lucide:bot",
     },
+    SOFTWARE_DEVELOPMENT: {
+        name: "Software Development",
+        class: "bg-[#2ea68d]/20 text-[#2ea68d]",
+        icon: "lucide:code",
+    },
 };
 
 export const PROJECTS = [
@@ -112,7 +117,7 @@ export const PROJECTS = [
         paper: "https://www.mdpi.com/2076-3417/13/18/10492",
         github: "https://github.com/mohsen-raoufi/LARS",
         image: "/projects/LARS.png",
-        tags: [TAGS.ROBOTICS, TAGS.CPP, TAGS.PYTHON, TAGS.CUDA, TAGS.VISION, TAGS.End_to_end_system_design, TAGS.Qt, TAGS.OPENCV, TAGS.COLLECTIVE, TAGS.AUGMENTED_REALITY, TAGS.HUMAN_ROBOT_INTERACTION, TAGS.DATA_ANALYSIS],
+        tags: [TAGS.AUGMENTED_REALITY, TAGS.HUMAN_ROBOT_INTERACTION, TAGS.SOFTWARE_DEVELOPMENT, TAGS.ROBOTICS, TAGS.COLLECTIVE, TAGS.CPP, TAGS.Qt, TAGS.CUDA, TAGS.VISION, TAGS.End_to_end_system_design, TAGS.OPENCV, TAGS.DATA_ANALYSIS],
     },
     {
         slug: "heterogeneous-opinion-dynamics",
@@ -124,7 +129,7 @@ export const PROJECTS = [
         github: "https://github.com/mohsen-raoufi/Heterogeneous-Opinion-Dynamics-with-Uncertainty",
         paper: "https://www.nature.com/articles/s41598-024-78856-8",
         image: "/projects/HetOpDy.png",
-        tags: [TAGS.COLLECTIVE, TAGS.MODELLING, TAGS.PYTHON, TAGS.AI, TAGS.BAYESIAN, TAGS.PROBABILISTIC_MODELING, TAGS.NETWORK_SCIENCE, TAGS.MULTI_AGENT_SYSTEMS, TAGS.COMPLEX_SYSTEMS, TAGS.DATA_ANALYSIS],
+        tags: [TAGS.COLLECTIVE, TAGS.NETWORK_SCIENCE, TAGS.MODELLING, TAGS.AI, TAGS.BAYESIAN, TAGS.PROBABILISTIC_MODELING, TAGS.MULTI_AGENT_SYSTEMS, TAGS.PYTHON, TAGS.DATA_ANALYSIS, TAGS.COMPLEX_SYSTEMS],
     },
     {
         slug: "messengers-echo-chambers",

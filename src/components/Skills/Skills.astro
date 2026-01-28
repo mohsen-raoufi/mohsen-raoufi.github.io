@@ -19,10 +19,14 @@ import { SKILL_CATEGORIES } from "../../data/skills";
                                 {skill.icon && (
                                     <img
                                         src={
-                                            skill.icon.startsWith("http") ||
-                                            skill.icon.startsWith("/")
+                                            skill.icon.startsWith("http")
                                                 ? skill.icon
-                                                : `https://cdn.simpleicons.org/${skill.icon}`
+                                                : skill.icon.startsWith("/")
+                                                  ? import.meta.env.BASE_URL.replace(
+                                                        /\/$/,
+                                                        "",
+                                                    ) + skill.icon
+                                                  : `https://cdn.simpleicons.org/${skill.icon}`
                                         }
                                         alt={skill.name}
                                         class="w-5 h-5"
