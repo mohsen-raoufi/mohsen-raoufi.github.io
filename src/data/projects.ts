@@ -116,7 +116,7 @@ export const PROJECTS = [
         linkText: "View Framework",
         paper: "https://www.mdpi.com/2076-3417/13/18/10492",
         github: "https://github.com/mohsen-raoufi/LARS",
-        image: "/projects/LARS.png",
+        image: "/projects/LARS_diag.jpg",
         tags: [TAGS.AUGMENTED_REALITY, TAGS.HUMAN_ROBOT_INTERACTION, TAGS.SOFTWARE_DEVELOPMENT, TAGS.ROBOTICS, TAGS.COLLECTIVE, TAGS.CPP, TAGS.Qt, TAGS.CUDA, TAGS.VISION, TAGS.End_to_end_system_design, TAGS.OPENCV, TAGS.DATA_ANALYSIS],
     },
     {

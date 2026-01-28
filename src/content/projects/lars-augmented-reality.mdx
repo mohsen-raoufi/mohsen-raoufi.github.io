@@ -5,7 +5,7 @@ link: "https://mohsen-raoufi.github.io/LARS/"
 linkText: "View Framework"
 paper: "https://www.mdpi.com/2076-3417/13/18/10492"
 github: "https://github.com/mohsen-raoufi/LARS"
-image: "/projects/LARS.png"
+image: "/projects/LARS_diag.jpg"
 tags: 
   - "AUGMENTED_REALITY"
   - "HUMAN_ROBOT_INTERACTION"
@@ -22,13 +22,44 @@ tags:
 order: 1
 ---
 
-## Overview
+## ✨ What is LARS?
+**LARS** (Light-Augmented Reality System) is a <text style='color: #4cb7feff'>standalone</text> framework engineered to provide a seamless interaction between physical collectives and virtual environments. As an end-to-end pipeline, it integrates high-speed <text style='color: #4cb7feff'>detection</text>, real-time <text style='color: #4cb7feff'>tracking</text>, and dynamic <text style='color: #4cb7feff'>projection</text> into a single, cohesive architecture. Built on a robust **Model-View-Controller (MVC)** pattern, the system enables researchers to bypass complex hardware setups and jump straight into experimentation. The core of <code style='color: #F9D779'>&lt;LARS&gt;</code> lies in its marker-free tracking engine.
 
-<code style='color: #F9D779'>&lt;LARS&gt;</code> is a <text style='color: #4cb7feff'>standalone</text> framework engineered to provide a seamless interaction between physical collectives and virtual environments. As an end-to-end pipeline, it integrates high-speed <text style='color: #4cb7feff'>detection</text>, real-time <text style='color: #4cb7feff'>tracking</text>, and dynamic <text style='color: #4cb7feff'>projection</text> into a single, cohesive architecture.
+## 🛠️ Key Features
 
-### Key Features
+- **🚀 High-Speed Detection:** Real-time marker-free tracking engine.
+- **🌈 Dynamic Projection:** Seamlessly project virtual environments onto physical spaces.
+- **🧩 MVC Architecture:** Built on a robust Model-View-Controller pattern for modularity.
+- **👶 Ease of Use:** Enables researchers to bypass complex hardware setups.
+- **⚡ Performance:** Optimized with C++, Qt, and CUDA for high-frame-rate interaction.
+- **🤖 Multi-Robot Support:** Track and interact with vast numbers of agents or objects simultaneously.
 
-- **High-Speed Detection:** Real-time marker-free tracking engine.
-- **Dynamic Projection:** Seamlessly project virtual environments onto physical spaces.
-- **MVC Architecture:** Built on a robust Model-View-Controller pattern for modularity.
-- **Ease of Use:** Enables researchers to bypass complex hardware setups.
+## 🎯 Why LARS?
+
+- **Zero-Setup:** No need for expensive motion capture systems or dedicated markers.
+- **Versatile:** Works with any camera-projector setup and any number of robots.
+- **Open-Source:** Fully available for the community to assume, adapt, and advance.
+- **Extensible:** Modular design allows for easy integration of new sensing or display modalities.
+
+## 🏗️ Architecture Overview
+
+The system is designed with modularity in mind, separating the core logic (**Model**), the user interface (**View**), and the coordination layer (**Controller**). This ensures that researchers can modify tracking algorithms without breaking the UI, or swap projection techniques without rewriting the core logic.
+
+*   **Detection Layer:** Uses OpenCV and CUDA to process video streams and identify agents.
+*   **Tracking Layer:** Maintains identity and state of agents over time.
+*   **Projection Layer:** Maps virtual content back onto the physical world based on agent positions.
+
+## 🧱 Hardware Setup Overview
+
+- **🔦 Projector:** A ceiling-mounted projector, redirected by an adjustable mirror, casts visual objects onto the arena surface, creating the augmented "world" the robots see.
+- **👁️ Global Sensing for Detection and Tracking:** An overhead camera, attached to the frame, tracks robot positions, closing the loop between robots, visuals, and control software.
+- **🖥️ GUI and Overhead Controller:** A side display and a controller arm provide the human interface to LARS, for starting experiments, adjusting parameters, and monitoring the system in real time.
+- **🧩 Scaffolding:** An aluminum frame and enclosed base hold all components in a stable, portable structure.
+
+## 🧑‍🔬 Example Scenarios
+
+- **🗳️ Collective Decision-Making:** Track and visualize 100+ Kilobots in a noisy, projected environment.
+- **⏰ Swarm Synchronization:** Record robot states and group dynamics in real time.
+- **🕹️ Interactive Demos:** Let visitors steer/interact with swarms and see collective behavior.
+- **🧑‍🏫 Educational Labs:** Manipulate real experiments to teach robotics, physics, and complexity.
+
