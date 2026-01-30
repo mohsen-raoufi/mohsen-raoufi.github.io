@@ -1,0 +1,55 @@
+---
+title: "TrustMyETA: AI-Powered Travel Reliability Engine"
+description: "TrustMyETA is a travel time prediction system that calculates a 'Trust Score' for any given route, providing a probabilistic arrival time range based on risk factors like weather and traffic."
+link: "https://mohsen-raoufi.github.io/TrustMyETA/"
+linkText: "View Live Demo"
+image: "/projects/TrustMyETA.png"
+tags: 
+  - "REACT"
+  - "TYPESCRIPT"
+  - "TAILWIND"
+  - "NODEJS"
+  - "MONTE_CARLO"
+  - "GEOSPATIAL_ANALYSIS"
+  - "SYSTEM_ARCHITECTURE"
+order: 0
+---
+
+## 🚀 Functional Summary
+
+**TrustMyETA** is a travel time prediction system that calculates a **"Trust Score"** for any given route. Instead of a single ETA, it provides a probabilistic arrival time range based on risk factors.
+
+*   **Core Logic**: Uses **Monte Carlo Simulation** (1000 iterations) to model travel variability.
+*   **Input Vectors**: Analyzes Route Geometry (tortuosity), real-time Weather (snow, visibility), and Traffic patterns.
+*   **Output**: A normalized Reliability Score (0-100%), P95 (worst-case) arrival time, and categorized risk factors (Safe/Caution/High).
+*   **Demo Mode**: Features a fail-safe "Demo Mode" that serves pre-calculated mock data for specific presets (Berlin, Moscow, LA) to demonstrate functionality without a live backend connection.
+
+## 💻 Technical Stack & Skills Deployed
+
+The project demonstrates proficiency in **Modern Frontend Engineering**, **Geospatial Analysis**, and **System Architecture**.
+
+### Frontend Ecosystem
+*   **Framework**: React 19 + Vite (High-performance build tooling).
+*   **Language**: TypeScript (Strict typing for robust domain modeling).
+*   **Styling**: Tailwind CSS (Utility-first, responsive design).
+*   **Visualization**: Recharts (Statistical data plotting) & React-Leaflet (Interactive mapping).
+*   **State Management**: Complex async state handling for simulation lifecycles.
+
+### Backend & Data Science Concepts
+*   **Architecture**: Node.js / Fastify (REST API).
+*   **Validation**: Zod (Schema validation for API contracts).
+*   **Algorithms**: Implemented Monte Carlo statistical modeling and standard deviation analysis in TypeScript.
+*   **Simulation**: Created mock services (MockTraffic, MockWeather) to decouple frontend from expensive external APIs during development/demo.
+
+### DevOps & Deployment
+*   **CI/CD**: Implemented GitHub Actions workflows for automated testing and deployment.
+*   **Hosting Strategy**: Static site deployment to **GitHub Pages**.
+    *   Utilized `gh-pages` branch strategy for security (deploying only `dist` artifacts).
+    *   Configured distinct build scripts (`predeploy`, `deploy`) to ensure valid production builds.
+*   **Asset Management**: Optimization of static assets and custom bundle configuration.
+
+## 🏆 Key Achievements
+
+*   **Mocking Strategy**: Successfully architected a hybrid app that behaves dynamically but can be hosted statically by intercepting API calls for demo presets.
+*   **UX Engineering**: Designed a "Mission Control" interface with high-fidelity animations and clear visual hierarchy for complex statistical data.
+*   **Resilience**: Implemented robust error handling and fallback UI for environments where the backend is unreachable.

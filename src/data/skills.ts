@@ -34,6 +34,10 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
             { name: "Interactive Dashboards", icon: "https://skillicons.dev/icons?i=dashboard", color: "text-[#A1CCA6] border-[#A1CCA6]" },
             { name: "D3.js & Observable", icon: "https://skillicons.dev/icons?i=d3", color: "text-[#F9D779] border-[#F9D779]" },
             { name: "JavaScript", icon: "javascript", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "React", icon: "react", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "Vite", icon: "vite", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "Tailwind CSS", icon: "tailwindcss", color: "text-[#23CED9] border-[#23CED9]" },
+            { name: "Recharts", color: "text-[#FCA47C] border-[#FCA47C]" },
         ],
     },
 
@@ -56,6 +60,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
             { name: "Artificial Neural Networks (ANN)", color: "text-[#F9D779] border-[#F9D779]" },
             { name: "Graph Neural Networks (GNN)", color: "text-[#23CED9] border-[#23CED9]" },
             { name: "Optimization Algorithms", color: "text-[#FCA47C] border-[#FCA47C]" },
+            { name: "Monte Carlo Simulation", color: "text-[#A1CCA6] border-[#A1CCA6]" },
         ],
     },
 
@@ -78,6 +83,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
             { name: "CI/CD & GitHub Actions", icon: "githubactions", color: "text-[#FCA47C] border-[#FCA47C]" },
             { name: "Git & Version Control", icon: "git", color: "text-[#F9D779] border-[#F9D779]" },
             { name: "HIL/SIL", color: "text-[#F9D779] border-[#F9D779]" },
+            { name: "Node.js (Fastify)", icon: "nodejs", color: "text-[#A1CCA6] border-[#A1CCA6]" },
+            { name: "Zod", color: "text-[#097C87] border-[#097C87]" },
         ],
     },
 
