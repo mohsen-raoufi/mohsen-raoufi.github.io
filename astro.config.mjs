@@ -8,7 +8,7 @@ import mdx from '@astrojs/mdx';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://mohsen-raoufi.github.io',
-
+  base: '/mohsen-raoufi',
   integrations: [icon(), mdx()],
   vite: {
     plugins: [tailwindcss()]
