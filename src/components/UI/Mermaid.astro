@@ -1,0 +1,20 @@
+---
+const { chart } = Astro.props;
+---
+
+<div
+    class="mermaid-diagram bg-gray-900/50 p-6 rounded-2xl border border-white/10 my-8 overflow-x-auto"
+>
+    <div class="mermaid">
+        {chart}
+    </div>
+</div>
+
+<script>
+    import mermaid from "mermaid";
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: "dark",
+        securityLevel: "loose",
+    });
+</script>

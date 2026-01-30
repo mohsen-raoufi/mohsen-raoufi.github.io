@@ -16,6 +16,20 @@ const projectsCollection = defineCollection({
         paper: z.string().optional(),
         github: z.string().optional(),
         order: z.number().default(99),
+        richContent: z.object({
+            heroImage: z.string().optional(),
+            features: z.array(z.object({
+                title: z.string(),
+                description: z.string(),
+                icon: z.string().optional(),
+            })).optional(),
+            stats: z.array(z.object({
+                label: z.string(),
+                value: z.string(),
+            })).optional(),
+            gallery: z.array(z.string()).optional(),
+            challenges: z.string().optional(),
+        }).optional(),
     }),
 });
 

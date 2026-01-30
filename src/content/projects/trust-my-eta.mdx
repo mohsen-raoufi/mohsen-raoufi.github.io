@@ -1,6 +1,6 @@
 ---
-title: "TrustMyETA: AI-Powered Travel Reliability Engine"
-description: "TrustMyETA is a travel time prediction system that calculates a 'Trust Score' for any given route, providing a probabilistic arrival time range based on risk factors like weather and traffic."
+title: "TrustMyETA: Routing ETA Uncertainty Quantification"
+description: "TrustMyETA is a travel time prediction system that calculates a 'Trust Score' for any given route, providing a probabilistic arrival time range based on risk factors like weather, traffic, incidents, and route geometry. It is currently at a prototype stage."
 link: "https://mohsen-raoufi.github.io/TrustMyETA/"
 linkText: "View Live Demo"
 image: "/projects/TrustMyETA.png"
@@ -13,43 +13,216 @@ tags:
   - "GEOSPATIAL_ANALYSIS"
   - "SYSTEM_ARCHITECTURE"
 order: 0
+richContent:
+  heroImage: "/projects/TrustMyETA.png"
+  features:
+    - title: "Probabilistic Estimation"
+      description: "Uses Monte Carlo simulations (1000 iter.) to go beyond single-point estimates, providing full probability distributions for arrival times."
+      icon: "lucide:activity"
+    - title: "Confidence Metrics"
+      description: "Calculates a unique 'Trust Score' (normalized 0-100%) and P95 worst-case scenarios to help users make safer travel decisions."
+      icon: "lucide:shield-check"
+    - title: "Multi-Input Analysis"
+      description: "Synthesizes route tortuosity, real-time weather data (snow/visibility), and historic traffic patterns into a single reliability metric."
+      icon: "lucide:layers"
+  stats:
+    - label: "Monte-Carlo Simulations"
+      value: "1000+"
+    - label: ""
+      value: "Uncertainty Quantification"
+    - label: "Latency"
+      value: "<100ms"
+    - label: "DEMO"
+      value: "app"
+  gallery:
+    - "/projects/TrustMyETA.png"
+  challenges: "One of the detailed challenges was efficiently running 1000+ Monte Carlo iterations in real-time on the client side without blocking the main thread, solved by optimizing the statistical modeling algorithms in TypeScript."
 ---
 
-## 🚀 Functional Summary
 
-**TrustMyETA** is a travel time prediction system that calculates a **"Trust Score"** for any given route. Instead of a single ETA, it provides a probabilistic arrival time range based on risk factors.
 
-*   **Core Logic**: Uses **Monte Carlo Simulation** (1000 iterations) to model travel variability.
-*   **Input Vectors**: Analyzes Route Geometry (tortuosity), real-time Weather (snow, visibility), and Traffic patterns.
-*   **Output**: A normalized Reliability Score (0-100%), P95 (worst-case) arrival time, and categorized risk factors (Safe/Caution/High).
-*   **Demo Mode**: Features a fail-safe "Demo Mode" that serves pre-calculated mock data for specific presets (Berlin, Moscow, LA) to demonstrate functionality without a live backend connection.
+import { Icon } from 'astro-icon/components';
+import Badge from '../../components/UI/Badge.astro';
+import Mermaid from '../../components/UI/Mermaid.astro';
 
-## 💻 Technical Stack & Skills Deployed
+<div class="max-w-7xl mx-auto space-y-24 py-12">
 
-The project demonstrates proficiency in **Modern Frontend Engineering**, **Geospatial Analysis**, and **System Architecture**.
+  {/* Functional Summary Section */}
+  <section class="space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-white flex items-center gap-4">
+      <span class="p-3 bg-primary/20 rounded-2xl text-primary">
+        <Icon name="lucide:rocket" class="size-6 md:size-8" />
+      </span>
+      Functional Summary
+    </h2>
 
-### Frontend Ecosystem
-*   **Framework**: React 19 + Vite (High-performance build tooling).
-*   **Language**: TypeScript (Strict typing for robust domain modeling).
-*   **Styling**: Tailwind CSS (Utility-first, responsive design).
-*   **Visualization**: Recharts (Statistical data plotting) & React-Leaflet (Interactive mapping).
-*   **State Management**: Complex async state handling for simulation lifecycles.
+    <p class="text-lg md:text-xl leading-relaxed text-gray-200">
+      **TrustMyETA** is a travel time prediction system that calculates a <span class="text-white font-semibold">"Trust Score"</span> for any given route. Instead of a single ETA, it provides a probabilistic arrival time range based on risk factors.
+    </p>
 
-### Backend & Data Science Concepts
-*   **Architecture**: Node.js / Fastify (REST API).
-*   **Validation**: Zod (Schema validation for API contracts).
-*   **Algorithms**: Implemented Monte Carlo statistical modeling and standard deviation analysis in TypeScript.
-*   **Simulation**: Created mock services (MockTraffic, MockWeather) to decouple frontend from expensive external APIs during development/demo.
+    {/* Hero Image in Content */}
+    <div class="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-gray-900 group">
+      <img 
+        src="/projects/TrustMyETA.png" 
+        alt="TrustMyETA Dashboard Interface" 
+        class="w-full h-auto"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
+        <p class="text-white font-medium">Dashboard View: Risk Analysis & Trust Score</p>
+      </div>
+    </div>
 
-### DevOps & Deployment
-*   **CI/CD**: Implemented GitHub Actions workflows for automated testing and deployment.
-*   **Hosting Strategy**: Static site deployment to **GitHub Pages**.
-    *   Utilized `gh-pages` branch strategy for security (deploying only `dist` artifacts).
-    *   Configured distinct build scripts (`predeploy`, `deploy`) to ensure valid production builds.
-*   **Asset Management**: Optimization of static assets and custom bundle configuration.
+    <div class="grid md:grid-cols-2 gap-8 pt-8">
+      <div class="bg-gray-800/50 p-8 rounded-3xl border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="p-3 bg-blue-500/20 rounded-xl text-blue-400">
+            <Icon name="lucide:cpu" class="size-6" />
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold text-white">Core Logic</h3>
+        </div>
+        <p class="text-gray-300 text-lg leading-relaxed">
+          Uses <strong class="text-white">Monte Carlo Simulation</strong> (1000 iterations) to model travel variability.
+        </p>
+      </div>
 
-## 🏆 Key Achievements
+      <div class="bg-gray-800/50 p-8 rounded-3xl border border-white/10 backdrop-blur-sm">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="p-3 bg-purple-500/20 rounded-xl text-purple-400">
+            <Icon name="lucide:map" class="size-6" />
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold text-white">Input Vectors</h3>
+        </div>
+        <p class="text-gray-300 text-lg leading-relaxed">
+          Analyzes Route Geometry (tortuosity), real-time Weather (snow, visibility), and Traffic patterns.
+        </p>
+      </div>
+    </div>
 
-*   **Mocking Strategy**: Successfully architected a hybrid app that behaves dynamically but can be hosted statically by intercepting API calls for demo presets.
-*   **UX Engineering**: Designed a "Mission Control" interface with high-fidelity animations and clear visual hierarchy for complex statistical data.
-*   **Resilience**: Implemented robust error handling and fallback UI for environments where the backend is unreachable.
+    <div class="bg-gradient-to-r from-gray-900 to-gray-800/80 p-10 rounded-3xl border-l-8 border-secondary">
+      <h3 class="text-xl md:text-2xl font-bold text-white mb-4 flex items-center gap-3">
+        <Icon name="lucide:check-circle" class="text-secondary size-6" />
+        Output
+      </h3>
+      <p class="text-lg md:text-xl text-gray-200 leading-relaxed">
+        A normalized <strong class="text-white">Reliability Score (0-100%)</strong>, P95 (worst-case) arrival time, and categorized risk factors (Safe / Caution / High).
+      </p>
+    </div>
+  </section>
+
+  {/* System Architecture Section */}
+  <section class="space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-white flex items-center gap-4">
+      <span class="p-3 bg-teal-500/20 rounded-2xl text-teal-400">
+        <Icon name="lucide:network" class="size-6 md:size-8" />
+      </span>
+      System Architecture
+    </h2>
+    <div class="bg-gray-950 rounded-3xl border border-white/10 p-2 overflow-hidden shadow-2xl">
+        <Mermaid chart={`
+        graph TD
+            User[User] -->|Request ETA| Frontend[React Web App]
+            Frontend -->|POST /api/analyze| Backend[Node.js / Fastify API]
+            
+            subgraph "Trust Engine (Backend)"
+                Backend -->|Get Route| Routing[OSRM / Routing Service]
+                Backend -->|Get Weather| Weather[Open-Meteo API]
+                Backend -->|Get Traffic| Traffic[TomTom API / Mock Service]
+                
+                Routing -->|Route Geometry | Complexity[Complexity Analyzer]
+                Weather -->|Forecast| Normalizer[Risk Normalizer]
+                Traffic -->|Congestion| Normalizer
+                
+                Complexity --> RiskModel[Risk Assessment Model]
+                Normalizer --> RiskModel
+                
+                RiskModel -->|Variance Factors| Simulator[Monte Carlo Simulator]
+                Simulator -->|1000 Iterations| Confidence[Confidence Score & Range]
+                
+                Confidence --> Report[Reliability Report]
+                RiskModel --> Report
+    end
+    
+    Report -->|JSON| Frontend
+        `} />
+    </div>
+  </section>
+
+  {/* Technical Stack Section */}
+  <section class="space-y-8">
+    <h2 class="text-3xl md:text-4xl font-bold text-white flex items-center gap-4">
+      <span class="p-3 bg-pink-500/20 rounded-2xl text-pink-400">
+        <Icon name="lucide:code-2" class="size-6 md:size-8" />
+      </span>
+      Technical Stack & Skills
+    </h2>
+
+    <p class="text-lg md:text-xl leading-relaxed text-gray-300">
+      The project demonstrates proficiency in <strong class="text-white">Modern Frontend Engineering</strong>, <strong class="text-white">Geospatial Analysis</strong>, and <strong class="text-white">System Architecture</strong>.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+        <div class="flex items-start gap-4 p-6 bg-white/5 rounded-3xl border border-white/5 hover:bg-white/10 transition-colors">
+            <Icon name="simple-icons:react" class="size-10 text-[#61DAFB] shrink-0" />
+            <div>
+                <div class="font-bold text-white text-lg mb-1">React 19 + Vite</div>
+                <div class="text-gray-400 text-base">High-performance build tooling & modern React patterns.</div>
+            </div>
+        </div>
+        <div class="flex items-start gap-4 p-6 bg-white/5 rounded-3xl border border-white/5 hover:bg-white/10 transition-colors">
+            <Icon name="simple-icons:typescript" class="size-10 text-[#3178C6] shrink-0" />
+            <div>
+                <div class="font-bold text-white text-lg mb-1">TypeScript</div>
+                <div class="text-gray-400 text-base">Strict typing for robust domain modeling.</div>
+            </div>
+        </div>
+        <div class="flex items-start gap-4 p-6 bg-white/5 rounded-3xl border border-white/5 hover:bg-white/10 transition-colors">
+            <Icon name="simple-icons:tailwindcss" class="size-10 text-[#38B2AC] shrink-0" />
+            <div>
+                <div class="font-bold text-white text-lg mb-1">Tailwind CSS</div>
+                <div class="text-gray-400 text-base">Utility-first, responsive design architecture.</div>
+            </div>
+        </div>
+         <div class="flex items-start gap-4 p-6 bg-white/5 rounded-3xl border border-white/5 hover:bg-white/10 transition-colors">
+            <Icon name="lucide:bar-chart-2" class="size-10 text-pink-400 shrink-0" />
+            <div>
+                <div class="font-bold text-white text-lg mb-1">Visualization</div>
+                <div class="text-gray-400 text-base">Complex data plotting with Recharts & Leaflet.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gray-900/50 p-8 rounded-3xl border border-white/10">
+        <h3 class="text-xl font-bold text-white mb-6">Backend & Data Science Concepts</h3>
+        <ul class="space-y-6">
+          <li class="flex items-start gap-4">
+            <div class="p-2 bg-green-500/10 rounded-lg text-green-500 mt-1">
+                <Icon name="simple-icons:nodedotjs" class="size-5" />
+            </div>
+            <div>
+                <strong class="text-white text-lg block">Architecture</strong> 
+                <span class="text-gray-400 text-base">Node.js / Fastify (REST API) for high-throughput request handling.</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-4">
+            <div class="p-2 bg-yellow-500/10 rounded-lg text-yellow-500 mt-1">
+                <Icon name="lucide:shield" class="size-5" />
+            </div>
+            <div>
+                <strong class="text-white text-lg block">Validation</strong> 
+                <span class="text-gray-400 text-base">Zod (Schema validation) ensures strict API contracts typesafety.</span>
+            </div>
+          </li>
+           <li class="flex items-start gap-4">
+            <div class="p-2 bg-blue-500/10 rounded-lg text-blue-500 mt-1">
+                <Icon name="lucide:sigma" class="size-5" />
+            </div>
+            <div>
+                <strong class="text-white text-lg block">Algorithms</strong> 
+                <span class="text-gray-400 text-base">Implemented custom Monte Carlo statistical modeling and standard deviation analysis in pure TypeScript.</span>
+            </div>
+          </li>
+        </ul>
+    </div>
+  </section>
+
+</div>

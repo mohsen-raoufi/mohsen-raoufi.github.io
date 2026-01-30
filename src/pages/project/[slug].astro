@@ -3,6 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { TAGS } from "../../data/projects";
 import Badge from "../../components/UI/Badge.astro";
+import Title from "../../components/UI/Title.astro";
+import Section from "../../components/UI/Section.astro";
 import { Icon } from "astro-icon/components";
 
 export async function getStaticPaths() {
@@ -16,128 +18,226 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await project.render();
 
-// Map string tags from frontmatter back to full TAGS objects
 const richTags = project.data.tags
-    .map((tagKey) => TAGS[tagKey])
-    .filter(Boolean);
+    ? project.data.tags.map((tagKey) => TAGS[tagKey]).filter(Boolean)
+    : [];
+const hasRichContent = !!project.data.richContent;
+const { richContent } = project.data;
 ---
 
-<Layout>
-    <main class="pt-24 pb-20 px-4 min-h-screen">
-        <div class="max-w-4xl mx-auto">
-            <!-- Back Button -->
-            <a
-                href={import.meta.env.BASE_URL.replace(/\/$/, "") +
-                    "/#projects"}
-                class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8 group"
-            >
-                <Icon
-                    name="lucide:arrow-left"
-                    class="size-5 transition-transform group-hover:-translate-x-1"
-                />
-                Back to Projects
-            </a>
-
-            <!-- Project Header -->
-            <div class="space-y-6 mb-12">
-                <h1 class="text-4xl md:text-5xl font-bold text-white">
-                    {project.data.title}
-                </h1>
-
-                <!-- Tags -->
-                <div class="flex flex-wrap gap-2">
-                    {
-                        richTags.map((tag) => (
-                            <Badge
-                                class:list={[
-                                    "flex items-center gap-x-2 text-sm py-1.5 px-3 border-white/5",
-                                    tag.class,
-                                ]}
-                            >
-                                <Icon name={tag.icon} class="size-4" />
-                                {tag.name}
-                            </Badge>
-                        ))
-                    }
-                </div>
-            </div>
-
-            <!-- Project Image -->
-            <div
-                class="rounded-3xl overflow-hidden border border-white/10 shadow-2xl mb-12 bg-gray-900"
-            >
+<Layout title={`${project.data.title} | Portfolio`}>
+    <main class="min-h-screen bg-[#0a0a0a]">
+        <!-- Hero Section -->
+        <div class="relative h-[60vh] min-h-[400px] w-full overflow-hidden">
+            <div class="absolute inset-0">
                 <img
                     src={import.meta.env.BASE_URL.replace(/\/$/, "") +
-                        project.data.image}
+                        (richContent?.heroImage || project.data.image)}
                     alt={project.data.title}
-                    class="w-full h-auto"
+                    class="w-full h-full object-cover opacity-40 blur-sm scale-105"
                     transition:name={`project-image-${project.slug}`}
                 />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent"
+                >
+                </div>
             </div>
 
-            <!-- Content -->
-            <div class="grid md:grid-cols-3 gap-12">
-                <div
-                    class="md:col-span-2 space-y-6 prose prose-invert prose-lg max-w-none"
-                >
-                    <h2 class="text-2xl font-bold text-white mb-4">About</h2>
-                    <Content />
-                </div>
+            <div class="absolute bottom-0 left-0 w-full p-8 md:p-16">
+                <div class="max-w-7xl mx-auto space-y-6">
+                    <a
+                        href={import.meta.env.BASE_URL.replace(/\/$/, "") +
+                            "/#projects"}
+                        class="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-4 group"
+                    >
+                        <Icon
+                            name="lucide:arrow-left"
+                            class="size-5 transition-transform group-hover:-translate-x-1"
+                        />
+                        Back to Projects
+                    </a>
 
-                <!-- Sidebar / Links -->
-                <div class="space-y-6">
-                    <div class="glass-card p-6 rounded-2xl space-y-4">
-                        <h3 class="text-xl font-bold text-white">Links</h3>
+                    <h1
+                        class="text-4xl md:text-6xl font-bold text-white leading-tight"
+                    >
+                        {project.data.title}
+                    </h1>
+
+                    <div class="flex flex-wrap gap-2">
                         {
-                            project.data.github && (
-                                <a
-                                    href={project.data.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
+                            richTags.map((tag) => (
+                                <Badge
+                                    class:list={[
+                                        "flex items-center gap-x-2 text-sm py-1.5 px-3 border-white/5",
+                                        tag.class,
+                                    ]}
                                 >
-                                    <Icon name="lucide:github" class="size-5" />
-                                    <span>Source Code</span>
-                                </a>
-                            )
-                        }
-                        {
-                            project.data.link && (
-                                <a
-                                    href={project.data.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
-                                >
-                                    <Icon
-                                        name="lucide:external-link"
-                                        class="size-5"
-                                    />
-                                    <span>
-                                        {project.data.linkText || "Live Demo"}
-                                    </span>
-                                </a>
-                            )
-                        }
-                        {
-                            project.data.paper && (
-                                <a
-                                    href={project.data.paper}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    class="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
-                                >
-                                    <Icon
-                                        name="lucide:file-text"
-                                        class="size-5"
-                                    />
-                                    <span>Paper</span>
-                                </a>
-                            )
+                                    <Icon name={tag.icon} class="size-4" />
+                                    {tag.name}
+                                </Badge>
+                            ))
                         }
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="max-w-7xl mx-auto px-6 py-12 space-y-24">
+            <!-- Stats Grid -->
+            {
+                richContent?.stats && (
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 -mt-24 relative z-10">
+                        {richContent.stats.map((stat) => (
+                            <div class="glass-card p-6 text-center rounded-2xl border border-white/10 bg-gray-900/50 backdrop-blur-md">
+                                <div class="text-3xl font-bold text-white mb-1">
+                                    {stat.value}
+                                </div>
+                                <div class="text-sm text-gray-400 uppercase tracking-wider">
+                                    {stat.label}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )
+            }
+
+            <!-- Overview & Links -->
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="md:col-span-2 space-y-8">
+                    <Section title="Overview" id="overview">
+                        <div
+                            class="prose prose-invert prose-lg max-w-none text-gray-300"
+                        >
+                            <p class="lead">{project.data.description}</p>
+                            <Content />
+                        </div>
+                    </Section>
+
+                    {
+                        richContent?.challenges && (
+                            <div class="bg-white/5 rounded-2xl p-8 border border-white/10">
+                                <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                                    <Icon
+                                        name="lucide:zap"
+                                        class="text-yellow-400"
+                                    />
+                                    Technical Challenges
+                                </h3>
+                                <p class="text-gray-300 leading-relaxed">
+                                    {richContent.challenges}
+                                </p>
+                            </div>
+                        )
+                    }
+                </div>
+
+                <div class="space-y-8">
+                    <div
+                        class="glass-card p-6 rounded-2xl space-y-6 border border-white/10 bg-gray-900/40 sticky top-24"
+                    >
+                        <h3 class="text-xl font-bold text-white">
+                            Project Links
+                        </h3>
+                        <div class="space-y-3">
+                            {
+                                project.data.github && (
+                                    <a
+                                        href={project.data.github}
+                                        target="_blank"
+                                        class="flex items-center gap-3 p-3 rounded-xl bg-white/5 hover:bg-white/10 hover:text-white text-gray-300 transition-all group"
+                                    >
+                                        <Icon
+                                            name="lucide:github"
+                                            class="size-5 group-hover:scale-110 transition-transform"
+                                        />
+                                        <span>Source Code</span>
+                                    </a>
+                                )
+                            }
+                            {
+                                project.data.link && (
+                                    <a
+                                        href={project.data.link}
+                                        target="_blank"
+                                        class="flex items-center gap-3 p-3 rounded-xl bg-primary/20 hover:bg-primary/30 hover:text-white text-primary-300 transition-all group border border-primary/20"
+                                    >
+                                        <Icon
+                                            name="lucide:external-link"
+                                            class="size-5 group-hover:scale-110 transition-transform"
+                                        />
+                                        <span>Live / Demo</span>
+                                    </a>
+                                )
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Grid -->
+            {
+                richContent?.features && (
+                    <Section title="Key Features" id="features">
+                        <div class="grid md:grid-cols-3 gap-6">
+                            {richContent.features.map((feature) => (
+                                <div class="group p-8 rounded-3xl bg-gray-900/50 border border-white/5 hover:border-secondary/50 transition-all duration-500 hover:bg-gray-900/80">
+                                    <div class="size-12 rounded-2xl bg-secondary/20 flex items-center justify-center text-secondary mb-6 group-hover:scale-110 transition-transform duration-500">
+                                        <Icon
+                                            name={
+                                                feature.icon || "lucide:check"
+                                            }
+                                            class="size-6"
+                                        />
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white mb-3 group-hover:text-secondary transition-colors">
+                                        {feature.title}
+                                    </h3>
+                                    <p class="text-gray-400 leading-relaxed">
+                                        {feature.description}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </Section>
+                )
+            }
+
+            <!-- Gallery -->
+            {
+                richContent?.gallery && (
+                    <Section title="Gallery" id="gallery">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {richContent.gallery.map((img, i) => (
+                                <div class="rounded-2xl overflow-hidden border border-white/10 group relative aspect-video">
+                                    <img
+                                        src={
+                                            import.meta.env.BASE_URL.replace(
+                                                /\/$/,
+                                                "",
+                                            ) + img
+                                        }
+                                        alt={`Gallery image ${i + 1}`}
+                                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    />
+                                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                        <Icon
+                                            name="lucide:maximize-2"
+                                            class="text-white size-8"
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </Section>
+                )
+            }
+        </div>
     </main>
 </Layout>
+
+<style>
+    .glass-card {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+</style>
